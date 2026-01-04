@@ -77,7 +77,7 @@
 ## 4. MinerU功能
 
 > [!NOTE]
-> - `VastAI`加速卡仅支持使用`vlm-auto-engine`和`vlm-http-client`形式进行`VLM`模型推理加速
+> - `VastAI`加速卡当前仅支持`*-auto-engine`和`*-http-client`形式进行`VLM`模型推理，参考：[README_zh-CN.md#本地部署](https://github.com/opendatalab/MinerU/blob/master/README_zh-CN.md#本地部署)
 
 - 进入容器
     ```bash
@@ -88,13 +88,13 @@
 
     - 模型准备，参考官方介绍：[model_source.md](https://github.com/opendatalab/MinerU/blob/master/docs/zh/usage/model_source.md)
 
-    - 方式一：`vlm-auto-engine`
+    - 方式一：`vlm-auto-engine`/`hybrid-auto-engine`
 
         ```bash
         export MINERU_MODEL_SOURCE=modelscope
 
         # step1, 以`vlm-auto-engine`方式启动MinerU解析任务
-        mineru -p image.png \
+        mineru -p demo/pdfs/demo1.pdf \
         -o ./output \
         -b vlm-auto-engine \
         --http-timeout 1200 \
@@ -104,7 +104,7 @@
         --max-model-len 16384
         ```
 
-    - 方式二：`vlm-http-client`
+    - 方式二：`vlm-http-client`/`hybrid-http-client`
 
         ```bash
         # step1, 启动vLLM API server
@@ -149,11 +149,11 @@
     </tr>
     <tr>
       <td>hybrid-http-client</td>
-      <td>🔴</td>
+      <td>🟢</td>
     </tr>
     <tr>
       <td>hybride-auto-engine</td>
-      <td>🔴</td>
+      <td>🟢</td>
     </tr>
     <tr>
       <td>vlm-auto-engine</td>
@@ -170,11 +170,11 @@
     </tr>
     <tr>
       <td>hybrid-http-client</td>
-      <td>🔴</td>
+      <td>🟢</td>
     </tr>
     <tr>
       <td>hybride-auto-engine</td>
-      <td>🔴</td>
+      <td>🟢</td>
     </tr>
     <tr>
       <td>vlm-auto-engine</td>
@@ -191,11 +191,11 @@
     </tr>
     <tr>
       <td>hybrid-http-client</td>
-      <td>🔴</td>
+      <td>🟢</td>
     </tr>
     <tr>
       <td>hybride-auto-engine</td>
-      <td>🔴</td>
+      <td>🟢</td>
     </tr>
     <tr>
       <td>vlm-auto-engine</td>
@@ -225,4 +225,4 @@
 > - 🟢: 支持，运行较稳定，精度与NVIDIA GPU基本一致  
 > - 🟡: 支持但较不稳定，在某些场景下可能出现异常，或精度存在一定差异  
 > - 🔴: 不支持，无法运行，或精度存在较大差异
-> - `vlm-auto-engine`：VastAI仅支持vLLM后端
+> - `*-auto-engine`模式：VastAI仅支持vLLM后端
