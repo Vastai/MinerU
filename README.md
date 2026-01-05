@@ -28,6 +28,11 @@
 
 ## 3. 环境准备
 
+> [!TIP]
+> - 步骤`3.1/3.2/3.3`，可任选其一使用
+
+### 3.1 从基础镜像安装
+
 - 获取vllm_vacc基础镜像
     ```bash
     sudo docker pull harbor.vastaitech.com/ai_deliver/vllm_vacc:VVI-25.12.SP2
@@ -67,6 +72,46 @@
         # 或使用pip安装MinerU
         pip install -U "mineru[core]==2.7.0" -i https://mirrors.aliyun.com/pypi/simple
         ```
+
+### 3.2 编译完整镜像
+
+- 编译镜像
+
+  > - [vacc.Dockerfile](./vacc.Dockerfile)
+  
+  ```bash
+  sudo docker build -t vaparser:v0.3.0 -f vacc.Dockerfile .
+  ```
+
+- 启动容器
+    ```bash
+    sudo docker run -it \
+        --privileged=true \
+        --shm-size=256g \
+        --name vllm_service \
+        --ipc=host \
+        --network=host \
+        vaparser:v0.3.0 bash
+    ```
+
+### 3.3 拉取完整镜像
+
+- 获取完整镜像
+
+  ```bash
+  sudo pull harbor.vastaitech.com/ai_deliver/vaparser:v0.3.0
+  ```
+
+- 启动容器
+  ```bash
+  sudo docker run -it \
+      --privileged=true \
+      --shm-size=256g \
+      --name vllm_service \
+      --ipc=host \
+      --network=host \
+      harbor.vastaitech.com/ai_deliver/vaparser:v0.3.0 bash
+  ```
 
 > [!NOTE]
 > - `vllm_vacc`基础镜像内已包含`torch/vllm`等相关依赖
