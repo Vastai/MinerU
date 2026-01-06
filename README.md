@@ -99,7 +99,7 @@
 - 获取完整镜像
 
   ```bash
-  sudo pull harbor.vastaitech.com/ai_deliver/vaparser:v0.3.0
+  sudo docker pull harbor.vastaitech.com/ai_deliver/vaparser:v0.3.0
   ```
 
 - 启动容器
