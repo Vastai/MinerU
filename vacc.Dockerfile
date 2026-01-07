@@ -1,4 +1,4 @@
-# vllm_vacc基础镜像，已报告torch/vllm环境
+# vllm_vacc base environment, torch/vllm already installed
 FROM harbor.vastaitech.com/ai_deliver/vllm_vacc:VVI-25.12.SP2
 
 # Install libgl for opencv support & Noto fonts for Chinese characters
