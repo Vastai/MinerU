@@ -19,23 +19,23 @@
     cpu: Hygon C86-4G
     gpu: VA16 / VA1L / VA10L
     torch: 2.8.0+cpu
-    torch-vacc: 1.3.3.777
+    torch-vacc: 1.3.4.1081
     vllm: 0.11.1.dev0+gb8b302cde.d20251030.cpu
-    vllm-vacc: 0.11.0.777
-    driver: 00.25.12.30 d3_3_v2_9_a3_1 a76bf37 20251230
+    vllm-vacc: 0.11.0.1081
+    driver: 00.26.01.12 d3_3_v2_9_a3_1 eda8215 20260112
     docker: 28.1.1
     ```
 
 ## 3. 环境准备
 
 > [!TIP]
-> - 步骤`3.1/3.2/3.3`，可任选其一使用
+> - 步骤`3.1/3.2`，可任选其一使用
 
 ### 3.1 从基础镜像安装
 
 - 获取vllm_vacc基础镜像
     ```bash
-    sudo docker pull harbor.vastaitech.com/ai_deliver/vllm_vacc:VVI-25.12.SP2
+    sudo docker pull harbor.vastaitech.com/ai_deliver/vllm_vacc:AID-Sample-005
     ```
 
 - 启动容器
@@ -46,7 +46,7 @@
         --name vllm_service \
         --ipc=host \
         --network=host \
-        harbor.vastaitech.com/ai_deliver/vllm_vacc:VVI-25.12.SP2 bash
+        harbor.vastaitech.com/ai_deliver/vllm_vacc:AID-Sample-005 bash
     ```
 
 - 安装MinerU
@@ -94,24 +94,6 @@
         vaparser:v0.3.0 bash
     ```
 
-### 3.3 拉取完整镜像
-
-- 获取完整镜像
-
-  ```bash
-  sudo docker pull harbor.vastaitech.com/ai_deliver/vaparser:v0.3.0
-  ```
-
-- 启动容器
-  ```bash
-  sudo docker run -it \
-      --privileged=true \
-      --shm-size=256g \
-      --name vllm_service \
-      --ipc=host \
-      --network=host \
-      harbor.vastaitech.com/ai_deliver/vaparser:v0.3.0 bash
-  ```
 
 > [!NOTE]
 > - `vllm_vacc`基础镜像内已包含`torch/vllm`等相关依赖
