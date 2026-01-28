@@ -29,7 +29,7 @@
 ## 3. 环境准备
 
 > [!TIP]
-> - 步骤`3.1/3.2`，可任选其一使用
+> - 步骤`3.1/3.2/3.3`，可任选其一使用
 
 ### 3.1 从基础镜像安装
 
@@ -66,11 +66,11 @@
 
         # 通过源码安装MinerU
         git clone https://github.com/opendatalab/MinerU.git
-        git checkout 8c4b3ef3a20b11ddac9903f25124d24ea82639b5
+        git checkout 1c57a7bd9bfcb8803bca3b0854f9e331b335a142
         pip install -e .[core] -i https://mirrors.aliyun.com/pypi/simple
 
         # 或使用pip安装MinerU
-        pip install -U "mineru[core]==2.7.0" -i https://mirrors.aliyun.com/pypi/simple
+        pip install -U "mineru[core]==2.7.3" -i https://mirrors.aliyun.com/pypi/simple
         ```
 
 ### 3.2 编译完整镜像
@@ -80,7 +80,7 @@
   > - [vacc.Dockerfile](./vacc.Dockerfile)
   
   ```bash
-  sudo docker build -t vaparser:v0.3.0 -f vacc.Dockerfile .
+  sudo docker build -t vaparser:v0.4.0 -f vacc.Dockerfile .
   ```
 
 - 启动容器
@@ -91,13 +91,32 @@
         --name vllm_service \
         --ipc=host \
         --network=host \
-        vaparser:v0.3.0 bash
+        vaparser:v0.4.0 bash
     ```
 
 
+### 3.3 拉取完整镜像
+
+- 获取完整镜像
+
+  ```bash
+  sudo docker pull harbor.vastaitech.com/ai_deliver/vaparser:v0.4.0
+  ```
+
+- 启动容器
+  ```bash
+  sudo docker run -it \
+      --privileged=true \
+      --shm-size=256g \
+      --name vllm_service \
+      --ipc=host \
+      --network=host \
+      harbor.vastaitech.com/ai_deliver/vaparser:v0.4.0 bash
+  ```
+
 > [!NOTE]
 > - `vllm_vacc`基础镜像内已包含`torch/vllm`等相关依赖
-> - 截至`2025/12/31`，`VastAI`已支持`MinerU`至最新版本`2.7.0`，`master分支8c4b3ef3`
+> - 截至`2026/01/28`，`VastAI`已支持`MinerU`至最新版本`2.7.3`，`master分支1c57a7bd`
 > - 和`NVIDIA`硬件下`CUDA_VISIBLE_DEVICES`类似；在`VastAI`硬件中可以使用`VACC_VISIBLE_DEVICES`指定`可见计算卡ID`，如`-e VACC_VISIBLE_DEVICES=0,1,2,3`
 > - 需指定适当的`--shm-size`虚拟内存
 
@@ -135,6 +154,7 @@
 
         ```bash
         # step1, 启动vLLM API server
+        ## 已通过modelscope下载模型至默认目录
         vllm serve /root/.cache/modelscope/hub/models/OpenDataLab/MinerU2.5-2509-1.2B \
         --tensor-parallel-size 2 \
         --trust-remote-code \
@@ -154,6 +174,7 @@
 
 > [!NOTE]
 > - 注意在执行任意与`vllm`相关命令需追加`--enforce_eager`参数
+> - 其它使用方法，参考官方介绍：[使用-mineru](https://github.com/opendatalab/MinerU/blob/master/README_zh-CN.md#使用-mineru)
 
 
 ## 5. 注意事项
