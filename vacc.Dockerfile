@@ -1,5 +1,5 @@
 # vllm_vacc base environment, torch/vllm already installed
-FROM harbor.vastaitech.com/ai_deliver/vllm_vacc:AID-Sample-005
+FROM harbor.vastaitech.com/ai_deliver/vllm_vacc:VVI-25.12.SP2
 
 # Install libgl for opencv support & Noto fonts for Chinese characters
 RUN apt-get update && \

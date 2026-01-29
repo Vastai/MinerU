@@ -19,10 +19,10 @@
     cpu: Hygon C86-4G
     gpu: VA16 / VA1L / VA10L
     torch: 2.8.0+cpu
-    torch-vacc: 1.3.4.1081
+    torch-vacc: 1.3.3.777
     vllm: 0.11.1.dev0+gb8b302cde.d20251030.cpu
-    vllm-vacc: 0.11.0.1081
-    driver: 00.26.01.12 d3_3_v2_9_a3_1 eda8215 20260112
+    vllm-vacc: 0.11.0.777
+    driver: 00.25.12.30 d3_3_v2_9_a3_1 a76bf37 20251230
     docker: 28.1.1
     ```
 
@@ -35,7 +35,7 @@
 
 - 获取vllm_vacc基础镜像
     ```bash
-    sudo docker pull harbor.vastaitech.com/ai_deliver/vllm_vacc:AID-Sample-005
+    sudo docker pull harbor.vastaitech.com/ai_deliver/vllm_vacc:VVI-25.12.SP2
     ```
 
 - 启动容器
@@ -46,7 +46,7 @@
         --name vllm_service \
         --ipc=host \
         --network=host \
-        harbor.vastaitech.com/ai_deliver/vllm_vacc:AID-Sample-005 bash
+        harbor.vastaitech.com/ai_deliver/vllm_vacc:VVI-25.12.SP2 bash
     ```
 
 - 安装MinerU
