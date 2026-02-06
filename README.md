@@ -6,10 +6,14 @@
 - 模型中心：https://github.com/Vastai/VastModelZOO
 
 ## 1. 官方支持
+> [!TIP]
+> - 以下`opendatalab`官方合入文档链接，更新可能存在延迟，最新以本文档为准
 
 - ✨依赖MinerU官方仓库，零代码修改，可实现`MinerU2.5-2509-1.2B`模型在VACC硬件下推理
 - https://opendatalab.github.io/MinerU/zh/usage/acceleration_cards/VastAI
 - https://github.com/opendatalab/MinerU/blob/master/docs/zh/usage/acceleration_cards/VastAI.md
+
+
 
 ## 2. 测试平台
 
